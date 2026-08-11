@@ -52,10 +52,13 @@ async function startCamera() {
     requestAnimationFrame(detect);
   } catch (error) {
     console.error(error);
-    statusEl.textContent = "Camera permission/error";
+    statusEl.textContent = "Error: " + error.message;
     cameraState.textContent = "Error";
-    alert("Could not access the camera. Allow camera permission and make sure the site is using HTTPS.");
-  }
+    alert(
+        "Camera failed.\n\n" +
+        "Error: " + error.message +
+        "\n\nCheck camera permission and HTTPS.");
+    }
 }
 
 function stopCamera() {
